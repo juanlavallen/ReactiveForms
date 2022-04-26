@@ -16,9 +16,9 @@ export class BasicComponent implements OnInit {
   // });
 
   myForm: FormGroup = this.fb.group({
-    name:  [, [Validators.required, Validators.min(3)]  ],
-    price: [, [Validators.required, Validators.min(50)] ],
-    stock: [, [Validators.required, Validators.min(0)]  ]
+    name: [, [Validators.required, Validators.min(3)]],
+    price: [, [Validators.required, Validators.min(50)]],
+    stock: [, [Validators.required, Validators.min(0)]]
   });
 
   constructor(private fb: FormBuilder) { }
@@ -36,4 +36,11 @@ export class BasicComponent implements OnInit {
       this.myForm.controls[field].touched;
   }
 
+  save() {
+    if (this.myForm.invalid) {
+      this.myForm.markAllAsTouched();
+      return;
+    }
+    this.myForm.reset();
+  }
 }

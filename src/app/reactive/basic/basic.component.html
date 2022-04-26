@@ -3,7 +3,7 @@
 
 <div class="row">
     <div class="col">
-        <form [formGroup]="myForm" autocomplete="off">
+        <form (ngSubmit)="save()" [formGroup]="myForm" autocomplete="off">
             <div class="mb-3 row">
                 <label class="col-sm-3 col-form-label">Producto</label>
                 <div class="col-sm-9">
