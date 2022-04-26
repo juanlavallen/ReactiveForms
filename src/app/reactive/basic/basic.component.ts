@@ -31,4 +31,9 @@ export class BasicComponent implements OnInit {
     });
   }
 
+  invalidField(field: string) {
+    return this.myForm.controls[field].invalid &&
+      this.myForm.controls[field].touched;
+  }
+
 }
