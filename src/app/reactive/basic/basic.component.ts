@@ -24,6 +24,11 @@ export class BasicComponent implements OnInit {
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    this.myForm.reset({
+      name: 'RTX 4080ti',
+      price: 2500,
+      stock: 12
+    });
   }
 
 }
