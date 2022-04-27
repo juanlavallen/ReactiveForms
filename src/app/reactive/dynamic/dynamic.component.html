@@ -1,16 +1,20 @@
 <h2>Reactivos: Dinámicos</h2>
 <hr>
 
-<form autocomplete="off">
+<form
+    (ngSubmit)="save()"
+    [formGroup]="myForm" 
+    autocomplete="off">
     <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Nombre</label>
         <div class="col-sm-9">
             <input 
                 class="form-control" 
                 placeholder="Nombre de la persona" 
+                formControlName="name"
             />
             <span class="form-text text-danger"
-                *ngIf="">
+                *ngIf="invalidField('name')">
                 Este campo es obligatorio
             </span>
         </div>
@@ -22,11 +26,14 @@
             <div class="input-group">
                 <input 
                     class="form-control" 
-                    placeholder="Agregar" 
+                    placeholder="Agregar"
+                    [formControl]="newGameFavorite"
+                    (keyup.enter)="addFavorite()"
                 />
                 <button 
                     class="btn btn-outline-primary" 
-                    type="button">
+                    type="button"
+                    (click)="addFavorite()">
                     Agregar
                 </button>
             </div>
@@ -35,17 +42,19 @@
 
     <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Favoritos</label>
-        <div class="col-sm-9">
+        <div class="col-sm-9" formArrayName="favorites">
             <div 
-                class="input-group mb-1" 
-                *ngFor="">
+                *ngFor="let favorite of favoritesArr.controls; let i = index"
+                class="input-group mb-1">
                 <input 
                     class="form-control" 
                     required
+                    [formControlName]="i" 
                 />
                 <button 
                     class="btn btn-outline-danger" 
-                    type="button">
+                    type="button"
+                    (click)="deleteFormControl(i)">
                     Eliminar
                 </button>
             </div>
@@ -56,9 +65,20 @@
         <div class="col-sm-12">
             <button 
                 type="button" 
-                class="btn btn-primary float-end">
+                class="btn btn-primary float-end"
+                (click)="save()">
                 Guardar
             </button>
         </div>
     </div>
 </form>
+
+<span>Valid</span>
+<pre>{{myForm.invalid}}</pre>
+
+<span>Value</span>
+<pre>{{myForm.value | json}}</pre>
+
+<span>Add Game</span>
+<pre>{{newGameFavorite.valid}}</pre>
+<pre>{{newGameFavorite.value}}</pre>
