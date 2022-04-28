@@ -1,7 +1,7 @@
 <h2>Reactivos: Switches</h2>
 <hr>
 
-<form [formGroup]="myForm">
+<form [formGroup]="myForm" (ngSubmit)="save()">
     <div class="row mb-3">
         <label class="col-sm-3 col-form-label">Género</label>
         <div class="col-sm-9">
@@ -55,7 +55,8 @@
     <div class="row">
         <div class="col">
             <button 
-                class="btn btn-primary float-end">
+                class="btn btn-primary float-end"
+                type="submit">
                 Guardar
             </button>
         </div>
