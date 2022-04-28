@@ -1,7 +1,7 @@
 <h2>Reactivos: Switches</h2>
 <hr>
 
-<form>
+<form [formGroup]="myForm">
     <div class="row mb-3">
         <label class="col-sm-3 col-form-label">Género</label>
         <div class="col-sm-9">
@@ -9,11 +9,16 @@
                 <input 
                     class="form-check-input" 
                     type="radio" 
+                    formControlName="gender"
                 />
                 <label class="form-check-label">Masculino</label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" />
+                <input 
+                    class="form-check-input"
+                    type="radio" 
+                    formControlName="gender"
+                    />
                 <label class="form-check-label">Femenino</label>
             </div>
         </div>
@@ -26,6 +31,7 @@
                 <input 
                     class="form-check-input" 
                     type="checkbox"
+                    formControlName="notifications"
                 />
                 <label class="form-check-label">Quiero recibir notificaciones</label>
             </div>
@@ -38,7 +44,8 @@
             <div class="form-check">
                 <input 
                     class="form-check-input" 
-                    type="checkbox" 
+                    type="checkbox"
+                    formControlName="terms" 
                 />
                 <label class="form-check-label">Términos y condiciones de uso</label>
             </div>
@@ -54,19 +61,20 @@
         </div>
     </div>
 </form>
-<!-- 
+
+
 <h5>Valor del formulario</h5>
 <pre>{{ myForm.value | json }}</pre>
 <br>
 
 <h5>Persona</h5>
-<pre>{{ persona | json }}</pre>
+<pre>{{ person | json }}</pre>
 <br>
 
 <h5>Valid</h5>
 <pre>{{ myForm.valid }}</pre>
 
-<h5>Términos</h5>
+<!-- <h5>Términos</h5>
 <pre>{{ myForm.controls?.terminos?.errors | json }}</pre>
 
 <br>
