@@ -61,6 +61,9 @@
                         class="form-control" 
                         placeholder="Contraseña" 
                     />
+                    <span class="form-text text-danger" *ngIf="invalidField('password')">
+                        La contraseña debe de tener minimo 8 caracteres
+                    </span>
                 </div>
             </div>
 
@@ -69,9 +72,13 @@
                 <div class="col-sm-9">
                     <input 
                         type="password" 
-                        class="form-control" 
+                        class="form-control"
+                        formControlName="confirmPassword" 
                         placeholder="Confirmar Contraseña" 
                     />
+                    <span class="form-text text-danger" *ngIf="invalidField('confirmPassword')">
+                        Las contraseñas deben de ser iguales
+                    </span>
                 </div>
             </div>
 

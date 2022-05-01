@@ -25,9 +25,13 @@ export class ValidatorsService {
       const confirmPassword = formGroup.get(field2)?.value;
 
       if (password !== confirmPassword) {
+        formGroup.get(field2)?.setErrors({
+          error: true
+        });
         return { error: true };
       }
 
+      formGroup.get(field2)?.setErrors(null);
       return null;
     }
   }
