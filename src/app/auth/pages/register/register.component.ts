@@ -26,5 +26,11 @@ export class RegisterComponent implements OnInit {
     private validatorService: ValidatorsService
   ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.registerForm.reset({
+      name: 'Juan Lavallen',
+      email: 'example@example.com',
+      username: 'juan_dev_jr02'
+    });
+  }
 }
