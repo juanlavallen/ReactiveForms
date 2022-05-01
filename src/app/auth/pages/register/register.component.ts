@@ -33,4 +33,16 @@ export class RegisterComponent implements OnInit {
       username: 'juan_dev_jr02'
     });
   }
+
+  invalidField(field: string) {
+    return this.registerForm.get(field)?.invalid &&
+      this.registerForm.get(field)?.touched;
+  }
+
+  register() {
+    if (this.registerForm.invalid) {
+      this.registerForm.markAllAsTouched();
+      return;
+    }
+  }
 }

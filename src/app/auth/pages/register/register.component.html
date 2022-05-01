@@ -3,17 +3,20 @@
 
 <div class="row">
     <div class="col">
-        <form autocomplete="off">
-            
+        <form autocomplete="off"
+            [formGroup]="registerForm"
+            (ngSubmit)="register()">
+
             <div class="rowq mb-3">
                 <label class="col-sm3 col-form-label">Nombre</label>
                 <div class="col-sm-9">
                     <input 
-                        type="text" 
+                        type="text"
+                        formControlName="name" 
                         class="form-control" 
                         placeholder="Nombre de Usuario" 
                     />
-                    <span class="form-text text-danger">
+                    <span class="form-text text-danger" *ngIf="invalidField('name')">
                         Nombre completo
                     </span>
                 </div>
@@ -24,9 +27,13 @@
                 <div class="col-sm-9">
                     <input 
                         type="email" 
+                        formControlName="email"
                         class="form-control" 
                         placeholder="Email" 
                     />
+                    <span class="form-text text-danger" *ngIf="invalidField('email')">
+                        El email no es valido
+                    </span>
                 </div>
             </div>
 
@@ -34,10 +41,14 @@
                 <label class="col-sm3 col-form-label">Username</label>
                 <div class="col-sm-9">
                     <input 
-                        type="text" 
+                        type="text"
+                        formControlName="username" 
                         class="form-control" 
                         placeholder="Username" 
                     />
+                    <span class="form-text text-danger" *ngIf="invalidField('username')">
+                        El username no debe ser Strider
+                    </span>
                 </div>
             </div>
 
@@ -45,7 +56,8 @@
                 <label class="col-sm3 col-form-label">Password</label>
                 <div class="col-sm-9">
                     <input 
-                        type="password" 
+                        type="password"
+                        formControlName="password" 
                         class="form-control" 
                         placeholder="Contraseña" 
                     />
@@ -65,7 +77,7 @@
 
             <div class="row">
                 <div class="col">
-                    <button class="btn btn-primary float-end">
+                    <button type="submit" class="btn btn-primary float-end">
                         Registrar
                     </button>
                 </div>
@@ -74,3 +86,24 @@
         </form>
     </div>
 </div>
+
+<span>Valid</span>
+<pre>{{registerForm.valid}}</pre>
+
+<span>Form Errors</span>
+<pre>{{registerForm.errors}}</pre>
+
+<span>Nombre</span>
+<pre>{{registerForm.controls['name'].errors | json}}</pre>
+
+<span>Email</span>
+<pre>{{registerForm.controls['email'].errors | json}}</pre>
+
+<span>Username</span>
+<pre>{{registerForm.controls['username'].errors | json}}</pre>
+
+<span>Username</span>
+<pre>{{registerForm.controls['password'].errors | json}}</pre>
+
+<span>Confirm Password</span>
+<pre>{{registerForm.controls['confirmPassword'].errors | json}}</pre>
