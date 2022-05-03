@@ -32,7 +32,7 @@
                         placeholder="Email" 
                     />
                     <span class="form-text text-danger" *ngIf="invalidField('email')">
-                        El email no es valido
+                        {{messageErrorEmail}}
                     </span>
                 </div>
             </div>
@@ -84,7 +84,10 @@
 
             <div class="row">
                 <div class="col">
-                    <button type="submit" class="btn btn-primary float-end">
+                    <button 
+                        type="submit" 
+                        class="btn btn-primary float-end"
+                        [disabled]="registerForm.pending">
                         Registrar
                     </button>
                 </div>
@@ -99,6 +102,9 @@
 
 <span>Form Errors</span>
 <pre>{{registerForm.errors}}</pre>
+
+<span>Form Status</span>
+<pre>{{registerForm.status}}</pre>
 
 <span>Nombre</span>
 <pre>{{registerForm.controls['name'].errors | json}}</pre>
