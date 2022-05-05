@@ -1,14 +1,14 @@
 <h1 class="mt-5">Selectores Anidados</h1>
 <hr>
 
-<form>
+<form [formGroup]="selectForm">
     <div class="row mb-3">
         <div class="col">
             <label class="form-label">Continente</label>
-            <select class="form-control">
+            <select class="form-control" formControlName="region">
                 <option value="">Seleccione Continente</option>
-                <option *ngFor="">
-                    
+                <option *ngFor="let region of regions">
+                    {{region}}
                 </option>
             </select>
         </div>
@@ -17,10 +17,10 @@
     <div class="row mb-3" *ngIf="">
         <div class="col">
             <label class="form-label">Pais</label>
-            <select class="form-control">
+            <select class="form-control" formControlName="country">
                 <option value="">Seleccione el Pais</option>
-                <option *ngFor="">
-
+                <option *ngFor="let country of countries">
+                    {{country.name}}
                 </option>
             </select>
         </div>
@@ -29,16 +29,16 @@
     <div class="row mb-3" *ngIf="">
         <div class="col">
             <label class="form-label">Frontera</label>
-            <select class="form-control">
+            <select class="form-control" formControlName="border">
                 <option value="">Seleccione Pais Fronterizo</option>
-                <option *ngFor="">
-
+                <option *ngFor="let border of borders">
+                    {{border}}
                 </option>
             </select>
         </div>
     </div>
 
-    <div class="row" *ngIf="">
+    <div class="row" *ngIf="loading">
         <div class="col">
             <div class="alert alert-primary">
                 Cargando...
