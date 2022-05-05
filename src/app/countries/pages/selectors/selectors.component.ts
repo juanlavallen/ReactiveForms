@@ -42,5 +42,19 @@ export class SelectorsComponent implements OnInit {
         this.countries = countries;
         this.loading = false;
       });
+
+    // Cuando cambie el PAIS
+    this.selectForm.get('country')?.valueChanges
+      .pipe(
+        tap(() => {
+          this.selectForm.get('borders')?.reset('');
+          this.loading = true;
+        }),
+        switchMap(code => this.countriesService.getCountryByAlphaCode(code))
+      )
+      .subscribe(country => {
+        this.borders = country?.borders || [];
+        this.loading = false;
+      });
   }
 }
