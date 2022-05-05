@@ -29,4 +29,9 @@ export class CountriesService {
     const url = `${this._baseUrl}/alpha/${code}`;
     return this.http.get<Country>(url);
   }
+  
+  getCountryBySmall(code: string): Observable<CountrySmall> {
+    const url = `${this._baseUrl}/alpha/${code}?fields=alpha3Code;name`;
+    return this.http.get<CountrySmall>(url);
+  }
 }
