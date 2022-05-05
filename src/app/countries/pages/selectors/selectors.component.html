@@ -1,7 +1,7 @@
 <h1 class="mt-5">Selectores Anidados</h1>
 <hr>
 
-<form [formGroup]="selectForm">
+<form [formGroup]="selectForm" (ngSubmit)="saveForm()">
     <div class="row mb-3">
         <div class="col">
             <label class="form-label">Continente</label>

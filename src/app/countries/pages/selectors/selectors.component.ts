@@ -57,4 +57,8 @@ export class SelectorsComponent implements OnInit {
         this.loading = false;
       });
   }
+
+  saveForm() {
+    console.log(this.selectForm.value);
+  }
 }
