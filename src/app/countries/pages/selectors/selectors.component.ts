@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CountrySmall } from '../../interfaces/country.interface';
+import { CountriesService } from '../../services/countries.service';
 
 @Component({
   selector: 'app-selectors',
@@ -21,7 +22,10 @@ export class SelectorsComponent implements OnInit {
     border: ['', [Validators.required]]
   });
 
-  constructor(private fb: FormBuilder) { }
+  constructor(
+    private fb: FormBuilder,
+    private countriesService: CountriesService
+  ) {}
 
   ngOnInit(): void {
   }
